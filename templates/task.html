@@ -1,0 +1,123 @@
+<!-- tasks.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasks | Freelance Fuel</title>
+  <link rel="stylesheet" href="/css/task.css">
+</head>
+<body>
+<aside class="sidebar">
+    <a href="/templates/homepage.html"><h2>Freelance Fuel</h2></a>
+    <nav>
+      <a href="/templates/homepage.html">Home</a>      
+      <a href="/templates/dashboard.html">Dashboard</a>
+      <a href="/templates/clients.html">Clients</a>
+      <a href="/templates/task.html" class="active">Tasks</a>
+      <a href="/templates/payments.html">Payments</a>
+      <a href="/templates/analytics.html" >Analytics</a>
+    </nav>
+  </aside>
+
+
+  <main>
+    <h1>Tasks</h1>
+
+    <section class="task-overview">
+      <div class="overview-card">
+        <h3>Today’s Tasks</h3>
+        <p id="tasks-today-count">0</p>
+      </div>
+      <div class="overview-card">
+        <h3>Pending</h3>
+        <p id="tasks-pending-count">0</p>
+      </div>
+      <div class="overview-card">
+        <h3>Completed</h3>
+        <p id="tasks-completed-count">0</p>
+      </div>
+      <div class="overview-card">
+        <h3>Upcoming</h3>
+        <p id="tasks-upcoming-count">0</p>
+      </div>
+    </section>
+
+    <section class="task-controls">
+      <input type="search" id="search-input" placeholder="Search tasks..." />
+      <select id="filter-priority">
+        <option value="">Filter by Priority</option>
+        <option value="High">High Priority</option>
+        <option value="Medium">Medium Priority</option>
+        <option value="Low">Low Priority</option>
+      </select>
+      <select id="filter-status">
+        <option value="">Filter by Status</option>
+        <option value="Pending">Pending</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+      </select>
+    </section>
+
+    <button class="add-task-btn" id="open-modal-btn">+ Add Task</button>
+
+    <table id="task-table">
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>Due Date</th>
+          <th>Priority</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="task-table-body">
+        <!-- Tasks go here -->
+      </tbody>
+    </table>
+
+    <div class="calendar-placeholder">
+      📅 Calendar view coming soon! Stay tuned...
+    </div>
+  </main>
+
+  <!-- Add Task Modal -->
+  <div class="modal-bg" id="modal-bg">
+    <div class="modal">
+      <h2>Add New Task</h2>
+      <form id="task-form">
+        <label for="task-title">Task Title</label>
+        <input type="text" id="task-title" required />
+
+        <label for="task-desc">Description</label>
+        <textarea id="task-desc" placeholder="Optional"></textarea>
+
+        <label for="task-due-date">Due Date</label>
+        <input type="date" id="task-due-date" required />
+
+        <label for="task-priority">Priority</label>
+        <select id="task-priority" required>
+          <option value="">Select priority</option>
+          <option value="High">High</option>
+          <option value="Medium" selected>Medium</option>
+          <option value="Low">Low</option>
+        </select>
+
+        <label for="task-status">Status</label>
+        <select id="task-status" required>
+          <option value="Pending" selected>Pending</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Completed">Completed</option>
+        </select>
+
+        <div class="modal-buttons">
+          <button type="button" class="btn btn-cancel" id="close-modal-btn">Cancel</button>
+          <button type="submit" class="btn btn-complete">Add Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+<script src="/templates/task.js"></script>
+</body>
+</html>

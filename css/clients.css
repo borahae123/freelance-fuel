@@ -1,0 +1,130 @@
+/* Global Reset & Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #dbe9ff, #f6f9ff);
+  color: #2c3e50;
+  display: flex;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Fixed Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 240px;
+  background-color: #2a3f81; /* Dark blue */
+  color: #ffffff;
+  padding: 40px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.15);
+  z-index: 1000;
+  user-select: none;
+  font-size: 16px;
+  letter-spacing: 0.6px;
+  line-height: 1.5;
+}
+
+/* Sidebar Heading */
+.sidebar h2 {
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #f0f0f0;
+  text-align: center;
+  margin-bottom: 40px;
+  letter-spacing: 1.5px;
+}
+
+/* Sidebar Navigation */
+.sidebar nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sidebar nav a {
+  color: #cbd6f7;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center;
+  font-size: 16px;
+  letter-spacing: 0.6px;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background-color: #1c2b6e;
+  color: #e1e8ff;
+}
+
+
+/* Main content */
+.main-content {
+  margin-left: 240px; /* same as sidebar width */
+  padding: 40px 60px;
+  flex-grow: 1;
+  overflow-x: auto;
+}
+
+.main-content h1 {
+  margin-bottom: 25px;
+  color: #222831;
+  font-weight: 700;
+  font-size: 2.4rem;
+}
+
+/* Table styles */
+.clients-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.clients-table thead {
+  background-color: #1c2b6e;
+  color: #fff;
+}
+
+.clients-table th,
+.clients-table td {
+  text-align: left;
+  padding: 14px 18px;
+  border-bottom: 1px solid #ddd;
+}
+
+.clients-table tbody tr:hover {
+  background-color: #f0f9fa;
+}
+
+.clients-table a {
+  color: #0077cc;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.clients-table a:hover {
+  text-decoration: underline;
+  color: #005fa3;
+}

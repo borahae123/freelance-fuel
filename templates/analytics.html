@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Analytics | Freelance Fuel</title>
+  <link rel="stylesheet" href="/css/analytics.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+<aside class="sidebar">
+    <a href="/templates/homepage.html"><h2>Freelance Fuel</h2></a>
+    <nav>
+      <a href="/templates/homepage.html">Home</a>
+      <a href="/templates/dashboard.html">Dashboard</a>
+      <a href="/templates/clients.html">Clients</a>
+      <a href="/templates/task.html" >Tasks</a>
+      <a href="/templates/payments.html">Payments</a>
+      <a href="/templates/analytics.html" class="active">Analytics</a>
+    </nav>
+  </aside>
+
+  <main class="analytics-content">
+    <header class="analytics-header">FREELANCE DASHBOARD</header>
+
+    <div class="analytics-grid">
+
+      <!-- 1. Highlights -->
+      <section class="card highlights-card">
+        <h3>Highlights</h3>
+        <div class="highlight-numbers">
+          <div>
+            <span class="highlight-number">₹1,20,000</span>
+            <p>Total Revenue</p>
+          </div>
+          <div>
+            <span class="highlight-number">₹15,000</span>
+            <p>Pending Amount</p>
+          </div>
+          <div>
+            <span class="highlight-number">23</span>
+            <p>Projects Completed</p>
+          </div>
+          <div>
+            <span class="highlight-number">6</span>
+            <p>Active Clients</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Revenue Over Time -->
+<section class="card">
+  <h3>Revenue Over Time</h3>
+  <canvas id="revenueChart"></canvas>
+</section>
+
+<!-- 3. Income Breakdown -->
+<section class="card">
+  <h3>Income Breakdown</h3>
+  <canvas id="incomeChart"></canvas>
+</section>
+
+
+
+
+
+
+      <!-- 4. Top Clients -->
+      <section class="card">
+        <h3>Top Clients</h3>
+        <div class="client-grid">
+          <div class="client-card">
+            <h4>Rahul Design</h4>
+            <p>₹20,000 earned</p>
+            <p>3 Projects</p>
+            <p>⭐⭐⭐⭐⭐</p>
+          </div>
+          <div class="client-card">
+            <h4>Ayesha Creatives</h4>
+            <p>₹15,000 earned</p>
+            <p>2 Projects</p>
+            <p>⭐⭐⭐⭐</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Project Success -->
+<section class="card">
+  <h3>Project Success</h3>
+  <canvas id="successChart"></canvas>
+</section>
+
+      <!-- 6. Time Management -->
+      <section class="card">
+        <h3>Time Management</h3>
+        <div class="time-circles">
+          <div class="circle-progress">Work: 6 hrs/day</div>
+          <div class="circle-progress">Design: 50%</div>
+          <div class="circle-progress">Meetings: 25%</div>
+          <div class="circle-progress">Admin: 25%</div>
+        </div>
+      </section>
+
+      <!-- 7. Smart Suggestions -->
+      <section class="card">
+        <h3>Smart Suggestions</h3>
+        <ul class="suggestions-list">
+          <li>💡 You earn most on Wednesdays!</li>
+          <li>💡 Client B pays 5x faster!</li>
+          <li>💡 Branding projects = delays</li>
+        </ul>
+      </section>
+
+      <!-- 8. Client Love -->
+      <section class="card">
+        <h3>Client Love</h3>
+        <div class="testimonial">“You made our site look like a Vogue cover. Iconic.” ⭐⭐⭐⭐⭐</div>
+        <div class="testimonial">“Fast, fabulous, and flawless.” ⭐⭐⭐⭐</div>
+      </section>
+
+    </div>
+
+    <footer class="footer">
+      Designed with <span style="color:#e25555;">💖</span> by Meth
+    </footer>
+  </main>
+
+  <!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  // Revenue Over Time - Line Chart
+  const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+  const revenueChart = new Chart(revenueCtx, {
+    type: 'line',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+      datasets: [{
+        label: 'Revenue (₹)',
+        data: [15000, 18000, 22000, 28000, 26000, 30000, 35000],
+        backgroundColor: 'rgba(75, 118, 245, 0.2)',
+        borderColor: '#4b76f5',
+        borderWidth: 3,
+        fill: true,
+        tension: 0.3,
+        pointRadius: 5,
+        pointHoverRadius: 7,
+        pointBackgroundColor: '#4b76f5',
+        pointHoverBackgroundColor: '#2a3f81',
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: true, labels: { font: { weight: '600' } } },
+        tooltip: { mode: 'index', intersect: false }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: { callback: val => `₹${val / 1000}k` },
+          grid: { color: '#eaeaea' }
+        },
+        x: {
+          grid: { display: false }
+        }
+      }
+    }
+  });
+
+  // Income Breakdown - Donut Chart
+  const incomeCtx = document.getElementById('incomeChart').getContext('2d');
+  const incomeChart = new Chart(incomeCtx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Design', 'Development', 'Consulting', 'Marketing'],
+      datasets: [{
+        label: 'Income Sources',
+        data: [45, 30, 15, 10],
+        backgroundColor: [
+          '#6c63ff',
+          '#4b6ef5',
+          '#f45151',
+          '#f4b41a'
+        ],
+        hoverOffset: 30,
+        borderWidth: 2,
+        borderColor: '#fff'
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom', labels: { font: { weight: '600' } } },
+        tooltip: { callbacks: { label: ctx => `${ctx.label}: ₹${ctx.parsed}%` } }
+      }
+    }
+  });
+
+  // Project Success - Bar Chart
+  const successCtx = document.getElementById('successChart').getContext('2d');
+  const successChart = new Chart(successCtx, {
+    type: 'bar',
+    data: {
+      labels: ['On Time', 'Delayed', 'Ongoing'],
+      datasets: [{
+        label: 'Project Status (%)',
+        data: [75, 15, 10],
+        backgroundColor: [
+          '#4b6ef5',
+          '#f45151',
+          '#f4b41a'
+        ],
+        borderRadius: 8,
+        maxBarThickness: 50
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { enabled: true }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          max: 100,
+          ticks: { stepSize: 25, callback: val => val + '%' },
+          grid: { color: '#eaeaea' }
+        },
+        x: {
+          grid: { display: false },
+          ticks: { font: { weight: '600' } }
+        }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

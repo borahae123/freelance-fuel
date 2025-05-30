@@ -1,0 +1,367 @@
+/* Global Reset & Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #dbe9ff, #f6f9ff);
+  color: #2c3e50;
+  display: flex;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Fixed Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 240px;
+  background-color: #2a3f81; /* Dark blue */
+  color: #ffffff;
+  padding: 40px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.15);
+  z-index: 1000;
+  user-select: none;
+  font-size: 16px;
+  letter-spacing: 0.6px;
+  line-height: 1.5;
+}
+
+/* Sidebar Heading */
+.sidebar h2 {
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #f0f0f0;
+  text-align: center;
+  margin-bottom: 40px;
+  letter-spacing: 1.5px;
+}
+
+/* Sidebar Navigation */
+.sidebar nav {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sidebar nav a {
+  color: #cbd6f7;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center;
+  font-size: 16px;
+  letter-spacing: 0.6px;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background-color: #1c2b6e;
+  color: #e1e8ff;
+}
+
+
+/* Container */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 8px;
+  padding: 20px 30px 40px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  flex: 1;
+  margin-left: 260px; /* Leave space for fixed sidebar */
+}
+
+/* Headings */
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #1e2a78;
+}
+
+/* Summary Section */
+#summary {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  font-weight: 600;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Search and Filter */
+#search-filter {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+#searchInput,
+#statusFilter {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  flex: 1 1 200px;
+  min-width: 150px;
+}
+
+#statusFilter {
+  max-width: 180px;
+}
+
+/* Payments List */
+#paymentsList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 40px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 5px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Individual Payment Card */
+.payment-card {
+  background: #fefefe;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.payment-info {
+  flex: 3 1 220px;
+  min-width: 220px;
+}
+
+.payment-info p {
+  margin: 5px 0;
+  font-size: 0.95rem;
+}
+
+/* Status badges */
+.status {
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  color: white;
+  display: inline-block;
+  min-width: 80px;
+  text-align: center;
+  user-select: none;
+}
+
+.status.paid {
+  background-color: #28a745; /* Green */
+}
+
+.status.partial {
+  background-color: #ffc107; /* Yellow */
+  color: #333;
+}
+
+.status.pending {
+  background-color: #dc3545; /* Red */
+}
+
+/* Payment Actions */
+.payment-actions {
+  flex: 1.5 1 230px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 230px;
+  flex-wrap: nowrap;
+}
+
+.payment-actions input[type="number"] {
+  width: 100px;
+  padding: 7px 10px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  flex-shrink: 0;
+}
+
+.payment-actions button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: #1e2a78;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.payment-actions button:hover:not(:disabled) {
+  background-color: #324ab1;
+}
+
+.payment-actions button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+/* Add Payment Section */
+#addPaymentSection {
+  border-top: 2px solid #1e2a78;
+  padding-top: 25px;
+}
+
+#addPaymentSection h2 {
+  color: #1e2a78;
+  margin-bottom: 15px;
+}
+
+#addPaymentForm {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+#addPaymentForm input {
+  flex: 1 1 200px;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  min-width: 150px;
+}
+
+#addPaymentForm button {
+  flex: 0 0 140px;
+  background-color: #1e2a78;
+  color: white;
+  font-weight: 700;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#addPaymentForm button:hover {
+  background-color: #324ab1;
+}
+
+/* Alerts */
+.alert {
+  margin: 15px 0;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.alert.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.alert.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* Payment Container (probably for modal or focused card) */
+.payment-container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 320px;
+  text-align: center;
+}
+
+/* Inputs */
+input[type="number"] {
+  padding: 0.5rem;
+  width: 90%;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Button Groups */
+.button-group {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  flex: 1;
+  transition: background-color 0.3s ease;
+  min-width: 90px;
+}
+
+#submitPaymentBtn {
+  background-color: #007bff;
+  color: white;
+}
+
+#submitPaymentBtn:hover {
+  background-color: #0056b3;
+}
+
+/* Status buttons - hidden by default */
+.status-btn {
+  background-color: gray;
+  color: white;
+  cursor: default;
+  user-select: none;
+  display: none; /* hidden */
+}
+
+#pendingBtn {
+  background-color: #ff9800; /* orange */
+}
+
+#paidBtn {
+  background-color: #4caf50; /* green */
+}
+
+/* Reset button */
+.reset-btn {
+  background-color: #e91e63; /* pinkish-red */
+  color: white;
+}
+
+.reset-btn:hover {
+  background-color: #b0003a;
+}

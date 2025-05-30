@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Freelance Fuel - Payments</title>
+  <link rel="stylesheet" href="/css/payments.css" />
+</head>
+<body>
+<aside class="sidebar">
+    <a href="/templates/homepage.html"><h2>Freelance Fuel</h2></a>
+    <nav>
+      <a href="/templates/homepage.html">Home</a>
+      <a href="/templates/dashboard.html">Dashboard</a>
+      <a href="/templates/clients.html">Clients</a>
+      <a href="/templates/task.html" >Tasks</a>
+      <a href="/templates/payments.html" class="active">Payments</a>
+      <a href="/templates/analytics.html" >Analytics</a>
+    </nav>
+  </aside>
+
+  <div class="container" style="margin-left: 240px;">
+    <h1>Freelance Fuel — Payments</h1>
+
+    <!-- Summary Section -->
+    <section id="summary">
+      <div><strong>Total Revenue:</strong> $<span id="totalRevenue">0</span></div>
+      <div><strong>Total Paid:</strong> $<span id="totalPaid">0</span></div>
+      <div><strong>Total Pending:</strong> $<span id="totalPending">0</span></div>
+      <div><strong>Total Payments:</strong> <span id="totalPayments">0</span></div>
+    </section>
+
+    <!-- Search & Filter -->
+    <section id="search-filter">
+      <input type="text" id="searchInput" placeholder="Search by client name..." />
+      <select id="statusFilter">
+        <option value="all">All Statuses</option>
+        <option value="paid">Paid</option>
+        <option value="partial">Partial</option>
+        <option value="pending">Pending</option>
+      </select>
+    </section>
+
+    <!-- Payments List -->
+    <section id="paymentsList">
+      <div class="payment-container">
+        <h2>Invoice Payment</h2>
+        <p>Total Amount Due: <span id="totalAmountDisplay">1000</span> USD</p>
+        <p>Amount Paid: <span id="paidAmount">0</span> USD</p>
+        <p>Remaining Amount: <span id="remainingAmount">1000</span> USD</p>
+
+        <input
+          type="number"
+          id="partialPaymentInput"
+          placeholder="Enter partial payment amount"
+          min="1"
+          max="1000"
+        />
+        
+        <div class="button-group">
+          <button id="submitPaymentBtn">Submit Partial Payment</button>
+          <button id="pendingBtn" class="status-btn">Pending</button>
+          <button id="paidBtn" class="status-btn">Paid</button>
+          <button id="resetPaymentBtn" class="reset-btn">Reset Payment</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Add New Payment Form -->
+    <section id="addPaymentSection">
+      <h2>Add New Payment</h2>
+      <form id="addPaymentForm">
+        <input type="text" id="clientName" placeholder="Client Name" required />
+        <input type="number" id="totalAmount" placeholder="Total Amount Due ($)" min="0.01" step="0.01" required />
+        <input type="date" id="dueDate" required />
+        <input type="number" id="initialPaid" placeholder="Initial Amount Paid ($)" min="0" step="0.01" value="0" />
+        <button type="submit">Add Payment</button>
+      </form>
+    </section>
+  </div>
+ 
+  <script src="/templates/payment.js"></script>
+</body>
+</html>
